@@ -1,7 +1,7 @@
 # fisa_streamlit_project
 <hr>
 
-## :좌변기:화장실 급하시죠?:좌변기:
+## 🚽화장실 급하시죠?🚽
 
 <br>
 
@@ -21,15 +21,15 @@
 ### 기술 스택
 
 1. Frontend
-    - streamlit <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=red">
+    - <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=red">
 
 2. Data-Processing
-    - pandas <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=orange">
-    - numpy <img src="https://img.shields.io/badge/Numpy-013243?style=for-the-badge&logo=Numepy&logoColor=blue">
+    - <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=orange">
+    - <img src="https://img.shields.io/badge/Numpy-013243?style=for-the-badge&logo=Numepy&logoColor=blue">
 
 3. Map
-    - python(Folium) <img src="https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=Folium&logoColor=green">
-    - javascript(marker cluster) <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=yellow">
+    - <img src="https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=Folium&logoColor=green">
+    - <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=yellow">
 
 
 <br>
@@ -42,7 +42,6 @@
 [|서울교통공사_역사공중화장실정보|csv|서울교통공사|](https://www.data.go.kr/data/15044453/fileData.do)
 -----------
 [|서울시 공중화장실 위치정보|csv|서울 열린데이터 광장|](https://data.seoul.go.kr/dataList/OA-162/S/1/datasetView.do?tab=A)
-
 ---------------
 <br>
 <hr>
