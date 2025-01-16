@@ -153,14 +153,14 @@ if bt:
     if df_station[df_station.역명 == station].empty:
         st.write('### 어머 ❗❗ 내부화장실만 있나봐요 ㅠㅠ 어떡해⏱⏱')
     else: # 역 외부에 화장실이 있을 경우
-        st.write(f'### ➤{station}엔 외부화장실이 {len(df_st)}개 있어요 !!')
+        st.write(f'### ➤ {station}엔 외부화장실이 {len(df_st)}개 있어요 !!')
         st.dataframe(df_st[['역명', '리모델링연도', '위도', '경도']])
         
     # 다른 역보다 거리상으로 가까운 공중화장실이 없을 경우
     if df_outside[df_outside.가까운역 == station2].empty:
         st.write('### 다른 역이 더 가까운걸까요~~~?😨')
     else:# 다른 역보다 거리상으로 가까운 공중화장실이 있을 경우
-        st.write(f'### ➤{station2}역 근처엔 공중화장실이 {len(df_os)}개 있어요 !!')
+        st.write(f'### ➤ {station2}역 근처엔 공중화장실이 {len(df_os)}개 있어요 !!')
         left_column, right_column = st.columns(2)
         left_column.dataframe(df_os[['구명', '위도', '경도']])
         right_column.write("##### \n 🍀🍄🦋🌸♏️💗🍀 \n")
@@ -197,7 +197,7 @@ if bt:
         st.plotly_chart(fig, use_container_width = True)
 
 
-        st.write('### ➤제 맘대로 위치를 정할게요~')
+        st.write('### ➤ 제 맘대로 위치를 정할게요~')
 
         map = folium.Map(location=[none_lat, none_lon], zoom_start=16)
 
@@ -222,7 +222,7 @@ if bt:
         st.plotly_chart(fig, use_container_width = True)
 
 
-        st.write(f'### ➤{station}으로 설정할게요.\n')
+        st.write(f'### ➤ {station}으로 설정할게요.\n')
         map = folium.Map(location=[lat_lon.위도, lat_lon.경도], zoom_start=16)
 
 
