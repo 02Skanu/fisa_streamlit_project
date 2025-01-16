@@ -181,7 +181,7 @@ if bt:
     none_lat = df_outside.위도.mean()
     none_lon = df_outside.경도.mean()
 
-    st.write("### ➤ 구 별 화장실 분포")
+    
 
     # 가까운 화장실이 없을 경우
     if df_station[(df_station.역명 == station)].empty:
@@ -193,8 +193,7 @@ if bt:
                                 )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         
-        # 화장실 분포를 색으로 표현
-        st.plotly_chart(fig, use_container_width = True)
+        
 
 
         st.write('### ➤ 제 맘대로 위치를 정할게요~')
@@ -206,6 +205,10 @@ if bt:
                                 fill_color = 'red', fill_opacity = 1).add_to(map)
         folium.Marker(location=[none_lat, none_lon]).add_to(map)
         st.components.v1.html(map._repr_html_(), height=600)
+
+        # 화장실 분포를 색으로 표현
+        st.write("### ➤ 구 별 화장실 분포")
+        st.plotly_chart(fig, use_container_width = True)
     else: # 가까운 곳에 화장실이 있을 경우
         
         # 역을 내 위치로 설정
@@ -219,7 +222,7 @@ if bt:
                                 )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         
-        st.plotly_chart(fig, use_container_width = True)
+        
 
 
         st.write(f'### ➤ {station}으로 설정할게요.\n')
@@ -238,6 +241,8 @@ if bt:
         # MarkerCluster( location, overlay=True).add_to(map)
 
         st.components.v1.html(map._repr_html_(), height=600)
+        st.write("### ➤ 구 별 화장실 분포")
+        st.plotly_chart(fig, use_container_width = True)
 
 
     # 리모델링연도 평균 line 그래프
