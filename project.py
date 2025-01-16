@@ -6,6 +6,7 @@ import json
 import folium
 import plotly.graph_objects as go  
 from folium.plugins import MarkerCluster  
+from plotly.subplots import make_subplots
 
 # 파일 읽기
 df_station = pd.DataFrame(pd.read_csv('C:/ITStudy/fisa_streamlit_project/data/merged_data.csv',encoding='cp949',index_col = 0))
@@ -17,6 +18,11 @@ group = pd.read_csv('C:/ITStudy/fisa_streamlit_project/data/grouped_stations.csv
 st.title("🚽화장실 급하시죠?🚽")
 st.write('---------------------------------------------')
 st.sidebar.title("현재 위치를 알려주세요")
+
+
+
+
+# ---------------------------그래프 시작-----------------------------------
 
 
 # 호선 별 리모델링연도 평균 ( line )
@@ -35,12 +41,91 @@ fig_line.add_trace(go.Line(
 fig_line.update_layout(title_text=f"운영 노선별 리모델링연도 평균", title_x = 0.4)
 fig_line.update_xaxes(title_text='운영노선명')
 fig_line.update_yaxes(title_text='연도평균')
-        
+    
+# 구 별 화장실 개수
+df_gu = pd.value_counts(df_outside['구명'])
+df_gu = pd.DataFrame(df_gu).reset_index()
+
+# 역 별 화장실 개수
+df_stt = pd.value_counts(df_station.reset_index().운영노선명)
+df_stt = pd.DataFrame(df_stt).reset_index()
+
+
+# 두 개의 그래프를 그리기 위해 subplot을 사용
+fig_bar = make_subplots(rows=1, cols=2, column_widths=[0.5, 0.5])
+
+
+# 두 개의 Bar를 추가
+fig_bar.add_trace(go.Bar(
+    x=df_gu.구명, 
+    y=df_gu.iloc[:,1], 
+    showlegend=False,
+    marker=dict(
+        color=['aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure',
+        'beige', 'bisque', 'black', 'blanchedalmond', 'blue',
+        'blueviolet', 'brown', 'burlywood', 'cadetblue',
+        'chartreuse', 'chocolate', 'coral', 'cornflowerblue',
+        'cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan',
+        'darkgoldenrod', 'darkgray'],
+        line=dict(color='black', width=3),
+        pattern=dict(shape='x')
+    ),  
+    width=0.5
+    ), row=1, col=1)
+
+fig_bar.add_trace(go.Bar(
+    x=df_stt.운영노선명,
+    y=df_stt.iloc[:,1], 
+    showlegend=False,
+
+    # 꾸미기
+    marker=dict(
+        color=['#A05EB5', '#00B140', '#A9431E', '#67823A', '#E31C79', '#00A9E0', '#FC4C02', '#0032A0'],  # 색상 리스트
+        line=dict(color='black', width=3),
+        pattern=dict(shape='/')
+    ),  
+    width=0.5
+    ), row=1, col=2)
+fig_bar.update_layout(
+    title={
+        'text':"구 / 역 별 화장실 개수",
+        'font':{'size':40, 'color':'white'}},
+    paper_bgcolor='#2C2C2C',
+    plot_bgcolor='#1F1F2E',
+    
+    
+    xaxis=dict(
+        title='구 명',
+        titlefont=dict(color='white'), 
+        tickfont=dict(color='white', size = 5)
+    ),
+    yaxis=dict(
+        title='화장실 개수', 
+        titlefont=dict(color='white'),
+        tickfont=dict(color='white')
+    ),
+    xaxis2=dict( 
+        title='노선명', 
+        titlefont=dict(color='white'),
+        tickfont=dict(color='white')
+    ),
+    yaxis2=dict( 
+        title='화장실 개수',  
+        titlefont=dict(color='white'), 
+        tickfont=dict(color='white') 
+    )
+)
+
+
+# ---------------------------그래프 끝-----------------------------------
+
+
+
 
 # 구 입력
 gu = st.sidebar.selectbox(
     "가까운 구 이름을 선택하세요",
-    (sorted(set(group['구']))),
+    (sorted(set(df_station['구']))),
     index=None,
     placeholder="ex) 노원구",
 )
@@ -79,13 +164,8 @@ if bt:
         left_column, right_column = st.columns(2)
         left_column.dataframe(df_os[['구명', '위도', '경도']])
         right_column.write("##### \n 🍀🍄🦋🌸♏️💗🍀 \n")
-        right_column.write("##### 르끼비끼잖아 ?!??")
+        right_column.write("##### 르끼비끼잖아 ❓❗❓❓")
     
-    
-    
-    
-    
-
     
 
     
@@ -117,7 +197,7 @@ if bt:
         st.plotly_chart(fig, use_container_width = True)
 
 
-        st.write('### 제 맘대로 위치를 정할게요~')
+        st.write('### ➤제 맘대로 위치를 정할게요~')
 
         map = folium.Map(location=[none_lat, none_lon], zoom_start=16)
 
@@ -142,7 +222,7 @@ if bt:
         st.plotly_chart(fig, use_container_width = True)
 
 
-        st.write(f'### {station}으로 설정할게요.\n')
+        st.write(f'### ➤{station}으로 설정할게요.\n')
         map = folium.Map(location=[lat_lon.위도, lat_lon.경도], zoom_start=16)
 
 
@@ -159,7 +239,10 @@ if bt:
 
         st.components.v1.html(map._repr_html_(), height=600)
 
+
     # 리모델링연도 평균 line 그래프
     st.write("## 잠깐❗❗❗")
     st.write("### 깨끗할수록 좋잖아요~ ヾ( ˃ᴗ˂ )◞ • *✰")
     st.plotly_chart(fig_line, use_container_width = True)
+    st.write('## 🤶🏻햅삐뉴이어〰〰〰')
+    st.plotly_chart(fig_bar, use_container_width= True)
