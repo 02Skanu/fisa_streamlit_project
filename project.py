@@ -14,9 +14,10 @@ from folium.plugins import MarkerCluster
 
 
 # 파일 읽기
-df_station = pd.DataFrame(pd.read_csv('C:/ITStudy/fisa_streamlit_project/data/merged_data.csv',encoding='cp949',index_col = 0))
-df_outside = pd.read_csv('C:/ITStudy/fisa_streamlit_project/data/pub_rest_gu.csv', encoding='cp949')
-group = pd.read_csv('C:/ITStudy/fisa_streamlit_project/data/grouped_stations.csv',encoding='cp949')
+df_station = pd.DataFrame(pd.read_csv('data/merged_data.csv',encoding='cp949',index_col = 0))
+df_outside = pd.read_csv('data/pub_rest_gu.csv', encoding='cp949')
+group = pd.read_csv('data/grouped_stations.csv',encoding='cp949')
+
 
 
 # 멘트
