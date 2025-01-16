@@ -176,7 +176,7 @@ if bt:
 
     
     # 서울시군구 정보를 담은 geojson파일 읽어오기
-    file_path = 'C:/ITStudy/fisa_streamlit_project/data/seoulsigungu.geojson'
+    file_path = 'data/seoulsigungu.geojson'
     with open(file_path, 'r', encoding='utf-8') as file:
         seoulsigungu = json.load(file)    
 
