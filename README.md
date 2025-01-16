@@ -27,7 +27,6 @@
 - 각 공중화장실 이용 가능 시간 안내 추가
 - 사용자의 GPS 위치를 기준으로 가장 가까운 지하철역을 계산 및 자동 적용
 
-
 <hr>
 
 ### **역할 분담**
@@ -50,8 +49,6 @@
     - <img src="https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=Folium&logoColor=green">
     - <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=yellow">
 
-
-
 <hr>
 
 ### 활용 데이터
@@ -64,7 +61,7 @@
     - [서울교통공사_역사공중화장실정보](https://www.data.go.kr/data/15044453/fileData.do)
     - [서울시 공중화장실 위치정보](https://data.seoul.go.kr/dataList/OA-162/S/1/datasetView.do?tab=A)
 
-<br>
+<hr>
 
 ### 데이터 정제 내역
 
@@ -101,9 +98,5 @@
 <hr>
 
 ### 🔥트러블슈팅
-1. 한정된 정보 제공 이슈
-    - 기존 기획 : 사용자가 목록에 기재된 화장실의 위·경도를 클릭 시, 
-                 상세주소 출력 및 지도에 다른 색으로 지도 포인트가 변환
-                    -> 시간상의 제약으로 후순위로 밀림
-
-2. 배포하는 과정에서, 앱이 데이터를 불러오지 못함
+1. 서울 공중화장실 데이터 '구' 컬럼에 노이즈 다량의 데이터 이슈
+    - 갈현송방차풀소 -> 은평구 / 남서울빌딩 -> 영등포구 / 송파두성빌딩 -> 송파구 등 
